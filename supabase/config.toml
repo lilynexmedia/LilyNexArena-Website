@@ -1,0 +1,16 @@
+project_id = "vddxueqeiusevpncfmsa"
+
+[functions.create-razorpay-order]
+verify_jwt = false
+
+[functions.verify-razorpay-payment]
+verify_jwt = false
+
+[functions.submit-registration]
+verify_jwt = false
+
+[functions.send-contact-email]
+verify_jwt = false
+
+[functions.send-approval-email]
+verify_jwt = false
