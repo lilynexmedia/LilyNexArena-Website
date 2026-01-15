@@ -56,6 +56,10 @@ function renderMarkdown(content: string) {
 
 function DocsList() {
   const { data: docs, isLoading } = useLegalDocs();
+  
+  // Filter out policy documents that have their own pages
+  const policySlugList = ['privacy-policy', 'refund-policy', 'terms-and-conditions', 'disclaimer', 'contact-support'];
+  const filteredDocs = docs?.filter(doc => !policySlugList.includes(doc.slug));
 
   if (isLoading) {
     return (
@@ -67,9 +71,19 @@ function DocsList() {
     );
   }
 
+  if (!filteredDocs || filteredDocs.length === 0) {
+    return (
+      <div className="text-center py-16">
+        <FileText className="w-16 h-16 text-white/20 mx-auto mb-4" />
+        <p className="text-white/40 font-body">No additional documents available.</p>
+        <p className="text-white/30 text-sm mt-2">Check out the policy pages linked below.</p>
+      </div>
+    );
+  }
+
   return (
     <div className="grid gap-6">
-      {docs?.map((doc, idx) => (
+      {filteredDocs.map((doc, idx) => (
         <motion.div
           key={doc.id}
           initial={{ opacity: 0, y: 20 }}
@@ -238,12 +252,18 @@ export default function Docs() {
                     <div className="p-8 rounded-3xl bg-white/[0.02] border border-white/5">
                       <h4 className="font-display text-sm font-bold uppercase tracking-widest mb-4">Quick Navigation</h4>
                       <ul className="space-y-3">
-                        {['Terms of Service', 'Privacy Policy', 'Refund Policy', 'Tournament Rules'].map((item) => (
-                          <li key={item}>
-                            <a href="#" className="text-sm text-white/40 hover:text-white transition-colors flex items-center justify-between group">
-                              {item}
+                        {[
+                          { name: 'Terms & Conditions', path: '/terms-and-conditions' },
+                          { name: 'Privacy Policy', path: '/privacy-policy' },
+                          { name: 'Refund Policy', path: '/refund-policy' },
+                          { name: 'Disclaimer', path: '/disclaimer' },
+                          { name: 'Contact & Support', path: '/contact-support' },
+                        ].map((item) => (
+                          <li key={item.path}>
+                            <Link to={item.path} className="text-sm text-white/40 hover:text-white transition-colors flex items-center justify-between group">
+                              {item.name}
                               <ChevronRight className="w-4 h-4 opacity-0 group-hover:opacity-100 transition-all" />
-                            </a>
+                            </Link>
                           </li>
                         ))}
                       </ul>
