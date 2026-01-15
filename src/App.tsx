@@ -20,6 +20,7 @@ import RefundPolicy from "./pages/RefundPolicy";
 import TermsAndConditions from "./pages/TermsAndConditions";
 import Disclaimer from "./pages/Disclaimer";
 import ContactSupport from "./pages/ContactSupport";
+import ShippingPolicy from "./pages/ShippingPolicy";
 import AdminLogin from "./pages/AdminLogin";
 import NotFound from "./pages/NotFound";
 
@@ -61,6 +62,7 @@ const App = () => (
               <Route path="/terms-and-conditions" element={<TermsAndConditions />} />
               <Route path="/disclaimer" element={<Disclaimer />} />
               <Route path="/contact-support" element={<ContactSupport />} />
+              <Route path="/shipping-policy" element={<ShippingPolicy />} />
             </Route>
             
             <Route path="/admin/login" element={<AdminLogin />} />
