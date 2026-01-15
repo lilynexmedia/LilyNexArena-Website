@@ -58,7 +58,7 @@ function DocsList() {
   const { data: docs, isLoading } = useLegalDocs();
   
   // Filter out policy documents that have their own pages
-  const policySlugList = ['privacy-policy', 'refund-policy', 'terms-and-conditions', 'disclaimer', 'contact-support'];
+  const policySlugList = ['privacy-policy', 'refund-policy', 'terms-and-conditions', 'disclaimer', 'contact-support', 'shipping-policy'];
   const filteredDocs = docs?.filter(doc => !policySlugList.includes(doc.slug));
 
   if (isLoading) {
@@ -256,6 +256,7 @@ export default function Docs() {
                           { name: 'Terms & Conditions', path: '/terms-and-conditions' },
                           { name: 'Privacy Policy', path: '/privacy-policy' },
                           { name: 'Refund Policy', path: '/refund-policy' },
+                          { name: 'Shipping Policy', path: '/shipping-policy' },
                           { name: 'Disclaimer', path: '/disclaimer' },
                           { name: 'Contact & Support', path: '/contact-support' },
                         ].map((item) => (
