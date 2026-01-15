@@ -15,6 +15,11 @@ import Contact from "./pages/Contact";
 import Rules from "./pages/Rules";
 import Help from "./pages/Help";
 import Docs from "./pages/Docs";
+import PrivacyPolicy from "./pages/PrivacyPolicy";
+import RefundPolicy from "./pages/RefundPolicy";
+import TermsAndConditions from "./pages/TermsAndConditions";
+import Disclaimer from "./pages/Disclaimer";
+import ContactSupport from "./pages/ContactSupport";
 import AdminLogin from "./pages/AdminLogin";
 import NotFound from "./pages/NotFound";
 
@@ -51,6 +56,11 @@ const App = () => (
               <Route path="/help" element={<Help />} />
               <Route path="/docs" element={<Docs />} />
               <Route path="/docs/:slug" element={<Docs />} />
+              <Route path="/privacy-policy" element={<PrivacyPolicy />} />
+              <Route path="/refund-policy" element={<RefundPolicy />} />
+              <Route path="/terms-and-conditions" element={<TermsAndConditions />} />
+              <Route path="/disclaimer" element={<Disclaimer />} />
+              <Route path="/contact-support" element={<ContactSupport />} />
             </Route>
             
             <Route path="/admin/login" element={<AdminLogin />} />
